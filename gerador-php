@@ -1,0 +1,42 @@
+$itens = array(
+  "m-top" => "margin-top", 
+  "m-left" => "margin-left", 
+  "m-right" => "margin-right",
+  "m-bottom" => "margin-bottom",
+  "p-top" => "padding-top", 
+  "p-left" => "padding-left", 
+  "p-right" => "padding-right",
+  "p-bottom" => "padding-bottom",
+  "w-d" => "width",
+  "h-t" => "height",
+  "b-left" => "border-left",
+  "b-right" => "border-right",
+  "b-top" => "border-top",
+  "b-bottom" => "border-bottom"
+);
+
+
+
+
+
+
+foreach ($itens as $i => $v) {
+  $gridClasses = array();
+  foreach ($allClasses as $cl) {
+    if (strstr($cl, $i))
+      {
+        if (!in_array($cl, $gridClasses))
+        {
+          $gridClasses = array_merge($gridClasses, array($cl));
+          $valor = ereg_replace("[^0-9]", "", $cl);
+  echo ".{$i}{$valor} {
+    {$v}: {$valor}px;
+  } \n ";
+        }
+      }
+
+
+  }
+
+
+}
